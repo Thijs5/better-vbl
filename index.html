@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl-be">
+<html lang="nl-be" ng-app="better-vbl">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,6 +8,7 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
   </head>
   <body>
     <nav class="blue darken-3" role="navigation">
@@ -18,30 +19,48 @@
           <li><a href="#">Heren</a></li>
         </ul>
 
-        <ul id="nav-mobile" class="side-nav">
-          <li><a href="#">Navbar Link</a></li>
+        <ul class="side-nav" id="nav-sidebar">
+          <li><a href="#">Dames</a></li>
+          <li><a href="#">Reserven</a></li>
+          <li><a href="#">Heren</a></li>
         </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+        <a href="#" data-activates="nav-sidebar" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
     </nav>
 
-    <ul class="collapsible popout" data-collapsible="accordion">
-      <li>
-        <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-      </li>
-    </ul>
+    <div class="container">
+      <h4>{Ploegnaam}</h4>
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="fixed-action-btn" style="bottom: 15px; right: 15px;" title="Downloaden naar agenda">
+      <a class="btn-floating btn-large blue darken-3">
+        <i class="large material-icons">file_download</i>
+      </a>
+    </div>
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
     <script src="app/app.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      $(function () {
+        $(".button-collapse").sideNav();
+      });
+    </script>
   </body>
 </html>
