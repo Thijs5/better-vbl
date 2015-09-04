@@ -8,6 +8,7 @@
   "main": "index.html",
   "license": "MIT",
   "dependencies": {
+    "Materialize": "materialize#~0.97.0",
     "angular": "~1.4.5"
   },
   "ignore": [
