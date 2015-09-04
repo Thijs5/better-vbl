@@ -7,6 +7,9 @@
   "description": "Mobile friendly port of the VBL website",
   "main": "index.html",
   "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.5"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
