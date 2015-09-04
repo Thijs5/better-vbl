@@ -1,0 +1,17 @@
+{
+  "name": "better-vbl",
+  "version": "0.0.1",
+  "authors": [
+    "Thijs Dickmans <thijsdickmans@gmail.com>"
+  ],
+  "description": "Mobile friendly port of the VBL website",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
