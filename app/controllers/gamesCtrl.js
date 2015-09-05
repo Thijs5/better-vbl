@@ -22,9 +22,6 @@ angular
       $scope.team.name = response.data[0].naam;
       $scope.team.games = response.data[0].wedstrijden;
       $scope.team.poule = response.data[0].poules[0].naam;
-
-
-      console.log(response);
     }
     function vblDataErrorCallback (response) {
       $scope.isLoadingData = true;
