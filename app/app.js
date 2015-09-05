@@ -17,13 +17,3 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
       controller: 'gamesCtrl'
     });
 }]);
-
-
-// Heren
-// http://vblcb.wisseq.eu/VBLCB_WebService/data/matchesbyteamguid?teamGuid=BVBL1281HSE++1
-
-// Reserven
-// http://vblcb.wisseq.eu/VBLCB_WebService/data/matchesbyteamguid?teamGuid=BVBL1281HSE++2
-
-// Dames
-// http://vblcb.wisseq.eu/VBLCB_WebService/data/matchesbyteamguid?teamGuid=BVBL1281DSE++1

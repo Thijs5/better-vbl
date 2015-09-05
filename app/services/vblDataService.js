@@ -4,7 +4,7 @@ app.service('vblDataService', ['$http', function ($http) {
 
   function matchesByTeam(teamGuid) {
     var url = 'http://vblcb.wisseq.eu/VBLCB_WebService/data/matchesbyteamguid?teamGuid=__teamGuid__'
-      .replace(/__teamGuid__/g, guid);
+      .replace(/__teamGuid__/g, teamGuid);
     return $http.get(url);
   }
 
