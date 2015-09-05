@@ -8,74 +8,36 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="assets/styles/style.css" media="screen" charset="utf-8">
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
   </head>
   <body>
     <nav class="blue darken-3" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">BBC Hoeilaart</a>
+      <div class="nav-wrapper container"><a id="logo-container" ui-sref="home" class="brand-logo">BBC Hoeilaart</a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">Dames</a></li>
-          <li><a href="#">Reserven</a></li>
-          <li><a href="#">Heren</a></li>
+          <li><a ui-sref="details({teamGuid: 'BVBL1281DSE++1'})">Dames</a></li>
+          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++2'})">Reserven</a></li>
+          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++1'})">Heren</a></li>
         </ul>
 
         <ul class="side-nav" id="nav-sidebar">
-          <li><a href="#">Dames</a></li>
-          <li><a href="#">Reserven</a></li>
-          <li><a href="#">Heren</a></li>
+          <li><a ui-sref="details({teamGuid: 'BVBL1281DSE++1'})">Dames</a></li>
+          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++2'})">Reserven</a></li>
+          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++1'})">Heren</a></li>
         </ul>
 
         <a href="#" data-activates="nav-sidebar" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
     </nav>
 
-    <div class="container">
-      <h4>{Ploegnaam}</h4>
-      <ul class="collapsible popout" data-collapsible="accordion">
-        <li>
-          <div class="collapsible-header">
-            za 5 september
-            <div class="right">
-              <span class="score">47-35</span><i class="material-icons right" style="margin:0">star</i>
-            </div>
-          </div>
-          <div class="collapsible-body">
-
-            <ul class="container">
-              <li><i class="material-icons">group</i> BBC Hoeilaart - Londerzeelse Dunkers</li>
-              <li><i class="material-icons">event</i> Zaterdag 5 september</li>
-              <li><i class="material-icons">schedule</i> 21:00u</li>
-              <li><i class="material-icons">pin_drop</i> Sporthal Hoeilaart, Hoeilaart</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="collapsible-header">
-            zo 13 september
-            <div class="right">
-              <span class="score">45-73</span><i class="material-icons right" style="margin:0">star_outline</i>
-            </div>
-          </div>
-          <div class="collapsible-body">
-
-          </div>
-        </li>
-        <li>
-          <div class="collapsible-header">za 19 september om 20:00u</div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="fixed-action-btn" style="bottom: 15px; right: 15px;" title="Downloaden naar agenda">
-      <a class="btn-floating btn-large blue darken-3">
-        <i class="large material-icons">file_download</i>
-      </a>
-    </div>
-
+    <div ui-view></div>
+      
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="app/app.js" charset="utf-8"></script>
+    <script src="app/controllers/gamesCtrl.js" charset="utf-8"></script>
+    <script src="app/services/vblDataService.js" charset="utf-8"></script>
 
     <script type="text/javascript">
       $(function () {
