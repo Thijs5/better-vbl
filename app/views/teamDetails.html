@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="col s12 center" ng-if="!isLoadingData">
     <div class="preloader-wrapper big active" style="margin-top: 50px;">
       <div class="spinner-layer spinner-blue-only">
@@ -14,49 +13,61 @@
     </div>
   </div>
 
-  <div ng-if="isLoadingData">
-    <h4>{Ploegnaam}</h4>
+  <div>
+    <h4>{{team.poule}}</h4>
 
-    <ul class="collapsible popout" data-collapsible="accordion">
-
-      <li>
-        <div class="collapsible-header">
-          za 5 september
-          <div class="right">
-            <span class="score">47-35</span><i class="material-icons right" style="margin:0">star</i>
-          </div>
-        </div>
-        <div class="collapsible-body">
-          <ul class="container">
-            <li><i class="material-icons">group</i> BBC Hoeilaart - Londerzeelse Dunkers</li>
-            <li><i class="material-icons">event</i> Zaterdag 5 september</li>
-            <li><i class="material-icons">schedule</i> 21:00u</li>
-            <li><i class="material-icons">pin_drop</i> Sporthal Hoeilaart, Hoeilaart</li>
-          </ul>
-        </div>
-      </li>
-
-      <li>
-        <div class="collapsible-header">
-          zo 13 september
-          <div class="right">
-            <span class="score">45-73</span><i class="material-icons right" style="margin:0">star_outline</i>
-          </div>
-        </div>
-        <div class="collapsible-body">
-        </div>
-      </li>
-      <li>
-        <div class="collapsible-header">za 19 september om 20:00u</div>
-        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    <ul class="collapsible popout" data-collapsible="accordion" style="margin-bottom: 80px" watch>
+      <li ng-repeat="game in team.games | orderBy: '-datSort':true">
+        <div class="collapsible-header">{{printDate(game.datumString)}}</div>
+        <div class="collapsible-body"><p>Body</p></div>
       </li>
     </ul>
-  </div>
 
+  </div>
 </div>
 
-<div class="fixed-action-btn" style="bottom: 15px; right: 15px;" title="Downloaden naar agenda">
+<div class="fixed-action-btn" style="bottom: 15px; right: 15px;" title="Downloaden naar agenda" ng-click="downloadCalendar()">
   <a class="btn-floating btn-large blue darken-3">
     <i class="large material-icons">file_download</i>
   </a>
 </div>
+
+
+
+
+
+
+<!-- <ul class="collapsible popout" data-collapsible="accordion">
+
+  <li>
+    <div class="collapsible-header">
+      za 5 september
+      <div class="right">
+        <span class="score">47-35</span><i class="material-icons right" style="margin:0">star</i>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <ul class="container">
+        <li><i class="material-icons">group</i> BBC Hoeilaart - Londerzeelse Dunkers</li>
+        <li><i class="material-icons">event</i> Zaterdag 5 september</li>
+        <li><i class="material-icons">schedule</i> 21:00u</li>
+        <li><i class="material-icons">pin_drop</i> Sporthal Hoeilaart, Hoeilaart</li>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="collapsible-header">
+      zo 13 september
+      <div class="right">
+        <span class="score">45-73</span><i class="material-icons right" style="margin:0">star_outline</i>
+      </div>
+    </div>
+    <div class="collapsible-body">
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header">za 19 september om 20:00u</div>
+    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+  </li>
+</ul> -->

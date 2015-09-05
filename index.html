@@ -8,8 +8,10 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <!--<link type="text/css" rel="stylesheet" href="bower_components/angular-materialize/css/style.css"  media="screen,projection"/>-->
     <link rel="stylesheet" href="assets/styles/style.css" media="screen" charset="utf-8">
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <!--<script type="text/javascript" src="bower_components/angular-materialize/src/angular-materialize.js"></script>-->
   </head>
   <body>
     <nav class="blue darken-3" role="navigation">
@@ -31,17 +33,18 @@
     </nav>
 
     <div ui-view></div>
-      
+
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="app/app.js" charset="utf-8"></script>
-    <script src="app/controllers/gamesCtrl.js" charset="utf-8"></script>
-    <script src="app/services/vblDataService.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/controllers/gamesCtrl.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/services/vblDataService.js" charset="utf-8"></script>
+    <script type="text/javascript" src="assets/libs/ics.js" charset="utf-8"></script>
 
     <script type="text/javascript">
       $(function () {
-        $(".button-collapse").sideNav();
+        $(".button-collapse").sideNav({closeOnClick: true});
       });
     </script>
   </body>
