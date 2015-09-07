@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="col s12 center" ng-if="!isLoadingData">
+
+  <div class="col s12 center-align" ng-if="!isLoadingData">
     <div class="preloader-wrapper big active" style="margin-top: 50px;">
       <div class="spinner-layer spinner-blue-only">
         <div class="circle-clipper left">
@@ -16,13 +17,36 @@
   <div>
     <h4>{{team.poule}}</h4>
 
-    <ul class="collapsible popout" data-collapsible="accordion" style="margin-bottom: 80px" watch>
-      <li ng-repeat="game in team.games | orderBy: '-datSort':true">
-        <div class="collapsible-header">{{printDate(game.datumString)}}</div>
-        <div class="collapsible-body"><p>Body</p></div>
-      </li>
-    </ul>
+    <div ng-if="isLoadingData">
 
+      <ul class="collapsible popout" data-collapsible="accordion" style="margin-bottom: 80px" watch>
+        <li ng-repeat="game in team.games | orderBy: '-datSort':true">
+          <div class="collapsible-header">{{printDate(game.datumString)}}</div>
+          <div class="collapsible-body"><p>Body</p></div>
+        </li>
+      </ul>
+
+      <table class="bordered striped">
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Thuisploeg</th>
+            <th>Bezoekers</th>
+            <th>Sporthal</th>
+            <th>Uitslag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="game in team.games | orderBy: '-datSort':true">
+            <td>{{game.datumString}} <br/> {{game.beginTijd}}u</td>
+            <td>{{trimmedTeamName(game.teamThuisNaam)}}</td>
+            <td>{{trimmedTeamName(game.teamUitNaam)}}</td>
+            <td>{{game.accommOmschr}}</td>
+            <td>{{game.uitslag}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

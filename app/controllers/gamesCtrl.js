@@ -9,7 +9,7 @@ angular
     $scope.isLoadingData = false;
 
     initialize();
-    // setTimeout(initialize, 3000);
+    // setTimeout(initialize, 5000);
 
     function initialize () {
       vblDataService.matchesByTeam($scope.team.guid).then(
@@ -22,6 +22,8 @@ angular
       $scope.team.name = response.data[0].naam;
       $scope.team.games = response.data[0].wedstrijden;
       $scope.team.poule = response.data[0].poules[0].naam;
+
+      console.log($scope.team);
     }
     function vblDataErrorCallback (response) {
       $scope.isLoadingData = true;
@@ -37,6 +39,21 @@ angular
       return getDayNl(date).substr(0, 2) + " " + d + " " + getMonthNl(date);
     }
     $scope.printDate = printDate;
+
+    function trimmedTeamName (teamName) {
+      return teamName.substr(0, teamName.length-6);
+    }
+    $scope.trimmedTeamName = trimmedTeamName;
+
+    function trimmedSportshall (sportshall) {
+      var parts = sportshall.split(',');
+      if (parts.length > 1) {
+        return parts[0];
+      } else {
+        return sportshall;
+      }
+    }
+
 
     function getDayNl (date) {
       var day = date.getDay();
@@ -69,9 +86,6 @@ angular
     }
     $scope.getMonthNl = getMonthNl;
 
-    function printScore (game) {
-
-    }
 
     function downloadCalendar () {
       var cal = ics();
