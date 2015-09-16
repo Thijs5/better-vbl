@@ -8,9 +8,9 @@
   "main": "index.html",
   "license": "MIT",
   "dependencies": {
-    "Materialize": "materialize#~0.97.0",
     "angular": "~1.4.5",
-    "angular-ui-router": "0.2.15"
+    "angular-ui-router": "0.2.15",
+    "semantic": "semantic-ui#~2.1.4"
   },
   "ignore": [
     "**/.*",

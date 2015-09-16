@@ -7,35 +7,33 @@
     <title>VBL - Vlaamse Basketballiga</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css"  media="screen,projection"/>
     <!--<link type="text/css" rel="stylesheet" href="bower_components/angular-materialize/css/style.css"  media="screen,projection"/>-->
     <link rel="stylesheet" href="assets/styles/style.css" media="screen" charset="utf-8">
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <!--<script type="text/javascript" src="bower_components/angular-materialize/src/angular-materialize.js"></script>-->
   </head>
   <body>
-    <nav class="blue darken-3" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" ui-sref="home" class="brand-logo">BBC Hoeilaart</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a ui-sref="details({teamGuid: 'BVBL1281DSE++1'})">Dames</a></li>
-          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++2'})">Reserven</a></li>
-          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++1'})">Heren</a></li>
-        </ul>
-
-        <ul class="side-nav" id="nav-sidebar">
-          <li><a ui-sref="details({teamGuid: 'BVBL1281DSE++1'})">Dames</a></li>
-          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++2'})">Reserven</a></li>
-          <li><a ui-sref="details({teamGuid: 'BVBL1281HSE++1'})">Heren</a></li>
-        </ul>
-
-        <a href="#" data-activates="nav-sidebar" class="button-collapse"><i class="material-icons">menu</i></a>
+    <div class="ui fixed inverted blue menu">
+    <div class="ui container">
+      <a ui-sref="home" class="header item">
+        <!-- <img class="logo" src="assets/images/logo.png"> -->
+        BBCH
+      </a>
+      <div class="right menu">
+        <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE++1'})" ui-sref-active="active">Dames</a>
+        <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE++2'})" ui-sref-active="active">Reserven</a>
+        <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE++1'})" ui-sref-active="active">Heren</a>
       </div>
-    </nav>
+    </div>
+  </div>
 
-    <div ui-view class="col-s12"></div>
+  <div ui-view class="ui container" style="margin-top:50px;">
+
+  </div>
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="bower_components/semantic/dist/semantic.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="app/app.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/gamesCtrl.js" charset="utf-8"></script>
@@ -43,9 +41,7 @@
     <script type="text/javascript" src="assets/libs/ics.js" charset="utf-8"></script>
 
     <script type="text/javascript">
-      $(function () {
-        $(".button-collapse").sideNav({closeOnClick: true});
-      });
+      
     </script>
   </body>
 </html>

@@ -16,6 +16,12 @@ angular
         vblDataLoadedCallback, vblDataErrorCallback
       );
     }
+    function initializeComponents () {
+      $('.ui.accordion').accordion();
+      $('.ui.dropdown').dropdown({
+        on: "hover"
+      });
+    }
 
     function vblDataLoadedCallback (response) {
       $scope.isLoadingData = true;
@@ -24,6 +30,8 @@ angular
       $scope.team.poule = response.data[0].poules[0].naam;
 
       console.log($scope.team);
+      setTimeout(initializeComponents, 200);
+
     }
     function vblDataErrorCallback (response) {
       $scope.isLoadingData = true;
@@ -57,13 +65,13 @@ angular
 
     function getDayNl (date) {
       var day = date.getDay();
-      var days = ["maandag",
+      var days = ["zondag",
+                  "maandag",
                   "dinsdag",
                   "woensdag",
                   "donderdag",
                   "vrijdag",
-                  "zaterdag",
-                  "zondag"];
+                  "zaterdag"];
       return days[day];
     }
     $scope.getDayNl = getDayNl;
@@ -108,6 +116,32 @@ angular
     	window.open( "data:text/calendar;charset=utf8," + escape(cal.calendar()));
     }
     $scope.downloadCalendar = downloadCalendar;
+
+    function isHomeGame(game) {
+      return game.teamThuisNaam == $scope.team.name;
+    }
+    $scope.isHomeGame = isHomeGame;
+
+    function isVictory(game) {
+      var scoreParts = game.uitslag.split('-');
+      var scoreHome;
+      var scoreAway;
+      if (scoreParts.length > 1) {
+        scoreHome = scoreParts[0].trim();
+        scoreAway = scoreParts[1].trim();
+
+        if (isHomeGame(game) && parseInt(scoreHome) > parseInt(scoreAway)) {
+          return true;
+        } else if (!isHomeGame(game) && parseInt(scoreHome) < parseInt(scoreAway)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      return false;
+    }
+    $scope.isVictory = isVictory;
 
     // Creates a new date object with hours added.
     function addHours(date, h) {

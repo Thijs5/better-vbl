@@ -1,97 +1,83 @@
 <div class="container">
 
-  <div class="col s12 center-align" ng-if="!isLoadingData">
-    <div class="preloader-wrapper big active" style="margin-top: 50px;">
-      <div class="spinner-layer spinner-blue-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
+  <div class="ui" ng-if="!isLoadingData">
+    <div class="ui active dimmer inverted">
+      <div class="ui loader"></div>
+    </div>
+  </div>
+
+  <div ng-if="isLoadingData">
+
+    <div class="ui grid" style="margin-bottom: 10px;">
+      <div class="sixteen wide column">
+        <h1 class="ui header">
+          <!-- <i class="calendar icon"></i> -->
+          <div class="content">
+            {{team.name}}
+            <div class="sub header">{{team.poule}}</div>
+            <!-- <div class="sub header">{{team.poule}}</div> -->
+          </div>
+        </h1>
+      </div>
+
+      <div class="sixteen wide column">
+
+        <div class="ui accordion segment">
+
+          <div ng-repeat="game in team.games | orderBy: '-datSort':true" ng-if="!loading">
+            <div class="title">
+              <div class="ui grid">
+                <div class="ten wide column">
+                  <strong>{{printDate(game.datumString)}}</strong>
+                </div>
+                <div class="six wide column right aligned">
+                  <i class="icon trophy" ng-if="isVictory(game)"></i>
+                  <span>{{game.uitslag}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="ui list">
+                <div class="item">
+                  <i class="icon building" title="Thuisploeg"></i>
+                  <div class="content">
+                    <div>{{game.teamThuisNaam}}</div>
+                  </div>
+                </div>
+                  <div class="item">
+                    <i class="icon building outline" title="Bezoekers"></i>
+                    <div class="content">
+                      <div>{{game.teamUitNaam}}</div>
+                    </div>
+                  </div>
+                <div class="item">
+                  <i class="icon marker" title="Sporthal"></i>
+                  <div class="content">
+                    <div>{{game.accommOmschr}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- <div class="four wide column">
+        <button class="ui icon button right" ng-click="downloadCalendar()" title="Download naar kalender">
+          <i class="download icon"></i>
+          <span class="hidden-mobile">Download</span>
+        </button>
+      </div> -->
+    </div>
+
+    <div class="sticky-action-button">
+      <div class="ui icon bottom right pointing dropdown large circular red button">
+        <i class="configure icon"></i>
+        <div class="menu">
+          <div class="item" ng-click="downloadCalendar()">Download kalender</div>
         </div>
       </div>
     </div>
   </div>
-
-  <div>
-    <h4>{{team.poule}}</h4>
-
-    <div ng-if="isLoadingData">
-
-      <ul class="collapsible popout" data-collapsible="accordion" style="margin-bottom: 80px" watch>
-        <li ng-repeat="game in team.games | orderBy: '-datSort':true">
-          <div class="collapsible-header">{{printDate(game.datumString)}}</div>
-          <div class="collapsible-body"><p>Body</p></div>
-        </li>
-      </ul>
-
-      <table class="bordered striped">
-        <thead>
-          <tr>
-            <th>Datum</th>
-            <th>Thuisploeg</th>
-            <th>Bezoekers</th>
-            <th>Sporthal</th>
-            <th>Uitslag</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="game in team.games | orderBy: '-datSort':true">
-            <td>{{game.datumString}} <br/> {{game.beginTijd}}u</td>
-            <td>{{trimmedTeamName(game.teamThuisNaam)}}</td>
-            <td>{{trimmedTeamName(game.teamUitNaam)}}</td>
-            <td>{{game.accommOmschr}}</td>
-            <td>{{game.uitslag}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 </div>
-
-<div class="fixed-action-btn" style="bottom: 15px; right: 15px;" title="Downloaden naar agenda" ng-click="downloadCalendar()">
-  <a class="btn-floating btn-large blue darken-3">
-    <i class="large material-icons">file_download</i>
-  </a>
-</div>
-
-
-
-
-
-
-<!-- <ul class="collapsible popout" data-collapsible="accordion">
-
-  <li>
-    <div class="collapsible-header">
-      za 5 september
-      <div class="right">
-        <span class="score">47-35</span><i class="material-icons right" style="margin:0">star</i>
-      </div>
-    </div>
-    <div class="collapsible-body">
-      <ul class="container">
-        <li><i class="material-icons">group</i> BBC Hoeilaart - Londerzeelse Dunkers</li>
-        <li><i class="material-icons">event</i> Zaterdag 5 september</li>
-        <li><i class="material-icons">schedule</i> 21:00u</li>
-        <li><i class="material-icons">pin_drop</i> Sporthal Hoeilaart, Hoeilaart</li>
-      </ul>
-    </div>
-  </li>
-
-  <li>
-    <div class="collapsible-header">
-      zo 13 september
-      <div class="right">
-        <span class="score">45-73</span><i class="material-icons right" style="margin:0">star_outline</i>
-      </div>
-    </div>
-    <div class="collapsible-body">
-    </div>
-  </li>
-  <li>
-    <div class="collapsible-header">za 19 september om 20:00u</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-  </li>
-</ul> -->
