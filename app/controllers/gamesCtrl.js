@@ -1,6 +1,7 @@
 angular
   .module('better-vbl')
-  .controller("gamesCtrl", ['$scope', '$stateParams', 'vblDataService', function($scope, $stateParams, vblDataService) {
+  .controller("gamesCtrl", ['$scope', '$rootScope', '$stateParams', 'vblDataService',
+    function($scope, $rootScope, $stateParams, vblDataService) {
 
     var vblData = {};
     $scope.team = {
@@ -29,9 +30,9 @@ angular
       $scope.team.games = response.data[0].wedstrijden;
       $scope.team.poule = response.data[0].poules[0].naam;
 
-      console.log($scope.team);
-      setTimeout(initializeComponents, 200);
+      $rootScope.$broadcast('navigation.team', $scope.team);
 
+      setTimeout(initializeComponents, 200);
     }
     function vblDataErrorCallback (response) {
       $scope.isLoadingData = true;

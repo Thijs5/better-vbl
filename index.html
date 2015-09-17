@@ -8,38 +8,56 @@
 
     <link type="text/css" rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="assets/styles/style.css" media="screen, projection" charset="utf-8">
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <!--<script type="text/javascript" src="bower_components/angular-materialize/src/angular-materialize.js"></script>-->
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
   </head>
   <body>
-    <div class="ui fixed inverted blue menu">
-    <div class="ui container">
-      <a ui-sref="home" class="header item">
-        <!-- <img class="logo" src="assets/images/logo.png"> -->
-        BBCH
-      </a>
-      <div class="right menu">
-        <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active">Dames</a>
-        <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  2'})" ui-sref-active="active">Reserven</a>
-        <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  1'})" ui-sref-active="active">Heren</a>
+    <aside id="sidebar-navigation"
+      class="ui left inverted blue sidebar vertical menu">
+      <div class="item">
+        <i class="favorite icon"></i> Favorieten
+        <div class="menu">
+          <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Dames</a>
+          <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  2'})" ui-sref-active="active" onclick="toggleSidebar()">Reserven</a>
+          <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Heren</a>
+        </div>
       </div>
-    </div>
-  </div>
+    </aside>
+    <div class="pusher">
+      <nav class="ui fixed inverted blue large menu" ng-controller="menuCtrl">
+        <div class="ui container">
+          <a class="launch item toggleSidebar" onclick="toggleSidebar()">
+            <i class="content icon"></i><span class="menu-label">Menu</span>
+          </a>
+          <span class="header item">
+            <!-- <img class="logo" src="assets/images/logo.png"> -->
+            {{pageTitle.trim()}}
+          </span>
+          <!-- <div class="right menu">
+            <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active">Dames</a>
+            <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  2'})" ui-sref-active="active">Reserven</a>
+            <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  1'})" ui-sref-active="active">Heren</a>
+          </div> -->
+        </div>
+      </nav>
 
-  <div ui-view class="ui container" style="margin-top:50px;">
+      <div ui-view class="ui container"></div>
 
-  </div>
+    </div><!-- .pusher -->
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/semantic/dist/semantic.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="app/app.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/gamesCtrl.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/controllers/menuCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/services/vblDataService.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/libs/ics.js" charset="utf-8"></script>
 
     <script type="text/javascript">
-
+      function toggleSidebar() {
+        $('#sidebar-navigation').sidebar('toggle');
+      }
     </script>
+
   </body>
 </html>
