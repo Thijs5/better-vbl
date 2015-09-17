@@ -36,8 +36,12 @@
             <tr ng-repeat="game in team.games | orderBy: '-datSort':true" ng-class="{positive: isVictory(game)}">
               <td class="single line">{{game.datumString}}</td>
               <td class="single line">{{game.beginTijd}}</td>
-              <td>{{shortenTeamName(game.teamThuisNaam)}}</td>
-              <td>{{shortenTeamName(game.teamUitNaam)}}</td>
+              <td>
+                <a ui-sref="details({teamGuid: game.teamThuisGUID})">{{shortenTeamName(game.teamThuisNaam)}}</a>
+              </td>
+              <td>
+                <a ui-sref="details({teamGuid: game.teamUitGUID})">{{shortenTeamName(game.teamUitNaam)}}</a>
+              </td>
               <td class="single line">{{game.uitslag}}</td>
               <td>
                 <a href="{{createGoogleMapsLink(game.accommOmschr)}}" target="_blank">
