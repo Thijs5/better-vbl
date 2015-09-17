@@ -143,6 +143,22 @@ angular
     }
     $scope.isVictory = isVictory;
 
+    function shortenTeamName(teamName) {
+      return teamName
+        .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '');
+    }
+    $scope.shortenTeamName = shortenTeamName;
+
+    function createGoogleMapsLink(accommOmschr) {
+      var sportshall = accommOmschr.substr(0, accommOmschr.lastIndexOf(','));
+
+      var url = "https://www.google.be/maps/search/__accommOmschr__";
+      var filledIn = url.replace("__accommOmschr__", sportshall);
+      return filledIn;
+
+    }
+    $scope.createGoogleMapsLink = createGoogleMapsLink;
+
     // Creates a new date object with hours added.
     function addHours(date, h) {
     	var copy = new Date(date.getTime());

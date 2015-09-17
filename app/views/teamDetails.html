@@ -13,62 +13,42 @@
         <h1 class="ui header">
           <!-- <i class="calendar icon"></i> -->
           <div class="content">
-            {{team.name}}
+            {{shortenTeamName(team.name)}}
             <div class="sub header">{{team.poule}}</div>
             <!-- <div class="sub header">{{team.poule}}</div> -->
           </div>
         </h1>
       </div>
 
-      <div class="sixteen wide column">
-
-        <div class="ui accordion segment">
-
-          <div ng-repeat="game in team.games | orderBy: '-datSort':true" ng-if="!loading">
-            <div class="title">
-              <div class="ui grid">
-                <div class="ten wide column">
-                  <strong>{{printDate(game.datumString)}}</strong>
-                </div>
-                <div class="six wide column right aligned">
-                  <i class="icon trophy" ng-if="isVictory(game)"></i>
-                  <span>{{game.uitslag}}</span>
-                </div>
-              </div>
-            </div>
-            <div class="content">
-              <div class="ui list">
-                <div class="item">
-                  <i class="icon building" title="Thuisploeg"></i>
-                  <div class="content">
-                    <div>{{game.teamThuisNaam}}</div>
-                  </div>
-                </div>
-                  <div class="item">
-                    <i class="icon building outline" title="Bezoekers"></i>
-                    <div class="content">
-                      <div>{{game.teamUitNaam}}</div>
-                    </div>
-                  </div>
-                <div class="item">
-                  <i class="icon marker" title="Sporthal"></i>
-                  <div class="content">
-                    <div>{{game.accommOmschr}}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
+      <div class="sixteen wide column" ng-if="!loading">
+        <table class="ui table striped">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Tijd</th>
+              <th>Thuisploeg</th>
+              <th>Bezoekers</th>
+              <th>Score</th>
+              <th>Sporthal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="game in team.games | orderBy: '-datSort':true" ng-class="{positive: isVictory(game)}">
+              <td class="single line">{{game.datumString}}</td>
+              <td class="single line">{{game.beginTijd}}</td>
+              <td>{{shortenTeamName(game.teamThuisNaam)}}</td>
+              <td>{{shortenTeamName(game.teamUitNaam)}}</td>
+              <td class="single line">{{game.uitslag}}</td>
+              <td>
+                <a href="{{createGoogleMapsLink(game.accommOmschr)}}" target="_blank">
+                  {{game.accommOmschr}}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <!-- <div class="four wide column">
-        <button class="ui icon button right" ng-click="downloadCalendar()" title="Download naar kalender">
-          <i class="download icon"></i>
-          <span class="hidden-mobile">Download</span>
-        </button>
-      </div> -->
+
     </div>
 
     <div class="sticky-action-button">
