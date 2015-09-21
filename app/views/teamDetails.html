@@ -1,77 +1,95 @@
-<div class="container">
-
-  <div class="ui" ng-if="!isLoadingData">
-    <div class="ui active dimmer inverted">
-      <div class="ui loader"></div>
-    </div>
-  </div>
-
-  <div ng-if="isLoadingData">
-
-    <div class="ui grid segment" style="margin-bottom: 10px;">
-      <div class="sixteen wide column">
-        <h1 class="ui header dividing">
-          <!-- <i class="calendar icon"></i> -->
-          <div class="content">
-            {{team.poule}}
-            <!-- <div class="sub header">{{team.poule}}</div> -->
+<div ng-if="!isLoadingData" class="valign-wrapper" style="padding: 30px;">
+  <div class="valign" style="margin-left:auto;margin-right:auto;">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
           </div>
-        </h1>
-      </div>
+        </div>
 
-      <div class="sixteen wide column" ng-if="!loading">
-        <table class="ui table striped">
-          <thead>
-            <tr class="hidden mobile">
-              <th>Datum</th>
-              <th>Tijd</th>
-              <th>Thuisploeg</th>
-              <th>Bezoekers</th>
-              <th>Score</th>
-              <th>Sporthal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="game in team.games | orderBy: '-datSort':true" ng-class="{positive: isVictory(game)}">
-              <td class="single line">
-                <span class="hidden tablet computer"><i class="icon calendar"></i></span>
-                {{game.datumString}}
-              </td>
-              <td class="single line">
-                <span class="hidden tablet computer"><i class="icon clock"></i></span>
-                {{game.beginTijd}}u</td>
-              <td>
-                <span class="hidden tablet computer"><i class="icon building"></i></span>
-                <a ui-sref="details({teamGuid: game.teamThuisGUID})">{{shortenTeamName(game.teamThuisNaam)}}</a>
-              </td>
-              <td>
-                <span class="hidden tablet computer"><i class="icon building outline"></i></span>
-                <a ui-sref="details({teamGuid: game.teamUitGUID})">{{shortenTeamName(game.teamUitNaam)}}</a>
-              </td>
-              <td class="single line">
-                <span class="hidden tablet computer"><i class="icon trophy"></i></span>
-                {{game.uitslag}}
-              </td>
-              <td>
-                <span class="hidden tablet computer"><i class="icon marker"></i></span>
-                <a href="{{createGoogleMapsLink(game.accommOmschr)}}" target="_blank">
-                  {{game.accommOmschr}}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="spinner-layer spinner-red">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
 
-    </div>
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
 
-    <div class="sticky-action-button">
-      <div class="ui icon bottom right pointing dropdown massive circular red button">
-        <i class="configure icon"></i>
-        <div class="menu">
-          <div class="item" ng-click="downloadCalendar()">Download kalender</div>
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
         </div>
       </div>
-    </div>
+  </div>
+</div>
+
+  <h4>{{team.poule}}</h4>
+<div ng-if="isLoadingData" class="white z-depth-1 content">
+  <table class="highlight hide-on-small-only">
+    <thead>
+      <tr class="hidden mobile">
+        <th>Datum</th>
+        <th>Tijd</th>
+        <th>Thuisploeg</th>
+        <th>Bezoekers</th>
+        <th>Score</th>
+        <th>Sporthal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="game in team.games | orderBy: '-datSort':true" ng-class="{'green lighten-4': isVictory(game)}">
+        <td class="single line">
+          {{game.datumString}}
+        </td>
+        <td class="single line">
+          {{game.beginTijd}}u</td>
+        <td>
+          <a ui-sref="details({teamGuid: game.teamThuisGUID})">{{shortenTeamName(game.teamThuisNaam)}}</a>
+        </td>
+        <td>
+          <a ui-sref="details({teamGuid: game.teamUitGUID})">{{shortenTeamName(game.teamUitNaam)}}</a>
+        </td>
+        <td class="single line">
+          {{game.uitslag}}
+        </td>
+        <td class="center-align">
+          <a href="{{createGoogleMapsLink(game.accommOmschr)}}" target="_blank">
+            <i class="material-icons">place</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div ng-if="isLoadingData">
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">settings</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating blue" title="Download kalender" ng-click="downloadCalendar()"><i class="material-icons">file_download</i></i></a></li>
+    </ul>
   </div>
 </div>

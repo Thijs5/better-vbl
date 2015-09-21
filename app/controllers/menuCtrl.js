@@ -15,4 +15,9 @@ angular
         .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '');
     }
     $scope.shortenTeamName = shortenTeamName;
+
+    function toggleSidebar() {
+      $('.button-collapse').sideNav('show');
+    }
+    $scope.toggleSidebar = toggleSidebar;
   }]);

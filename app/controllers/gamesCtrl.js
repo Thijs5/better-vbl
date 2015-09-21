@@ -18,10 +18,7 @@ angular
       );
     }
     function initializeComponents () {
-      $('.ui.accordion').accordion();
-      $('.ui.dropdown').dropdown({
-        on: "hover"
-      });
+      
     }
 
     function vblDataLoadedCallback (response) {
@@ -144,11 +141,11 @@ angular
     }
     $scope.isVictory = isVictory;
 
-    function shortenTeamName(teamName) {
-      return teamName
-        .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '');
-    }
-    $scope.shortenTeamName = shortenTeamName;
+      function shortenTeamName(teamName) {
+        return teamName
+          .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '');
+      }
+      $scope.shortenTeamName = shortenTeamName;
 
     function createGoogleMapsLink(accommOmschr) {
       var sportshall = accommOmschr.substr(0, accommOmschr.lastIndexOf(','));
