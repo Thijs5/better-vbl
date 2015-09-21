@@ -26,11 +26,11 @@
       <nav class="ui fixed inverted blue large menu" ng-controller="menuCtrl">
         <div class="ui container">
           <a class="launch item toggleSidebar" onclick="toggleSidebar()">
-            <i class="content icon"></i><span class="menu-label">Menu</span>
+            <i class="content icon"></i><span class="menu-label hidden mobile">Menu</span>
           </a>
           <span class="header item">
             <!-- <img class="logo" src="assets/images/logo.png"> -->
-            {{pageTitle.trim()}}
+            {{pageTitle}}
           </span>
           <!-- <div class="right menu">
             <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active">Dames</a>
@@ -40,7 +40,7 @@
         </div>
       </nav>
 
-      <div ui-view class="ui container"></div>
+      <div ui-view class="ui container" style="margin-top: 60px;"></div>
 
     </div><!-- .pusher -->
 

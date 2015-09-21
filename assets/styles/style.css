@@ -5,3 +5,18 @@ body {background: #eeeeee;}
   bottom: 5px;
   right: 5px;
 }
+
+@media screen and (max-width: 767px) {
+  /* MOBILE */
+  .mobile.hidden {display: none !important;}
+}
+
+@media screen and (min-width: 768px) {
+  /* TABLET */
+  .tablet.hidden {display: none !important;}
+}
+
+@media screen and (min-width: 992px) {
+  /* COMPUTER */
+  .computer.hidden {display: none !important;}
+}

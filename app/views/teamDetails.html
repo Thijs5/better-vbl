@@ -8,9 +8,9 @@
 
   <div ng-if="isLoadingData">
 
-    <div class="ui grid" style="margin-bottom: 10px;">
+    <div class="ui grid segment" style="margin-bottom: 10px;">
       <div class="sixteen wide column">
-        <h1 class="ui header">
+        <h1 class="ui header dividing">
           <!-- <i class="calendar icon"></i> -->
           <div class="content">
             {{team.poule}}
@@ -22,7 +22,7 @@
       <div class="sixteen wide column" ng-if="!loading">
         <table class="ui table striped">
           <thead>
-            <tr>
+            <tr class="hidden mobile">
               <th>Datum</th>
               <th>Tijd</th>
               <th>Thuisploeg</th>
@@ -33,16 +33,27 @@
           </thead>
           <tbody>
             <tr ng-repeat="game in team.games | orderBy: '-datSort':true" ng-class="{positive: isVictory(game)}">
-              <td class="single line">{{game.datumString}}</td>
-              <td class="single line">{{game.beginTijd}}</td>
+              <td class="single line">
+                <span class="hidden tablet computer"><i class="icon calendar"></i></span>
+                {{game.datumString}}
+              </td>
+              <td class="single line">
+                <span class="hidden tablet computer"><i class="icon clock"></i></span>
+                {{game.beginTijd}}u</td>
               <td>
+                <span class="hidden tablet computer"><i class="icon building"></i></span>
                 <a ui-sref="details({teamGuid: game.teamThuisGUID})">{{shortenTeamName(game.teamThuisNaam)}}</a>
               </td>
               <td>
+                <span class="hidden tablet computer"><i class="icon building outline"></i></span>
                 <a ui-sref="details({teamGuid: game.teamUitGUID})">{{shortenTeamName(game.teamUitNaam)}}</a>
               </td>
-              <td class="single line">{{game.uitslag}}</td>
+              <td class="single line">
+                <span class="hidden tablet computer"><i class="icon trophy"></i></span>
+                {{game.uitslag}}
+              </td>
               <td>
+                <span class="hidden tablet computer"><i class="icon marker"></i></span>
                 <a href="{{createGoogleMapsLink(game.accommOmschr)}}" target="_blank">
                   {{game.accommOmschr}}
                 </a>
