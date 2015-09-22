@@ -94,7 +94,7 @@
               </div>
             </div>
 
-            <div ng-if="hasScore(game)" class="ui bottom right attached label">{{game.uitslag}}</div>
+            <div ng-if="hasScore(game)" ng-class="{olive: isVictory(game)}" class="ui bottom right attached label">{{game.uitslag}}</div>
           </div>
 
         </div>
