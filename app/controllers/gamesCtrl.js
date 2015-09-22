@@ -129,7 +129,9 @@ angular
     $scope.isHomeGame = isHomeGame;
 
     function isVictory(game) {
-      var scoreParts = game.uitslag.split('-');
+      if (game.uitslag == "") return false;
+      
+      var scoreParts = game.uitslag.replace('- ', '-').match(/[\d]+-[\d]+/)[0].split('-');
       var scoreHome;
       var scoreAway;
       if (scoreParts.length > 1) {
