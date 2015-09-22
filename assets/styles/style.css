@@ -1,17 +1,8 @@
-body {background: #eeeeee;}
+body, #page-wrapper {background: #eeeeee;}
 a {cursor: pointer;}
 
-.content {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding: 15px;
-}
 .single.line {
   white-space: nowrap;
-}
-
-.side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
-    background-color: #0D47A1;
 }
 
 @media screen and (max-width: 767px) {

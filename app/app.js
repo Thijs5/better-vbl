@@ -9,7 +9,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'app/views/home.html'
+      templateUrl: 'app/views/home.html',
+      controller: function ($rootScope) {
+        $rootScope.$broadcast('navigation.pageTitle', 'Zoeken');
+      }
     })
     .state('details', {
       url: "/teams/:teamGuid",

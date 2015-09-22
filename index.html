@@ -6,54 +6,47 @@
     <meta charset="utf-8">
     <title>VBL - Vlaamse Basketballiga</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="assets/styles/style.css" media="screen, projection" charset="utf-8">
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
   </head>
   <body>
-
-    <div class="navbar-fixed">
-      <nav class="blue darken-4" role="navigation" ng-controller="menuCtrl">
-        <div class="nav-wrapper container">
-          <a id="logo-container" ng-click="toggleSidebar()" class="brand-logo">
-            {{pageTitle}}
+    <aside id="sidebar-navigation"
+      class="ui left inverted blue sidebar vertical menu">
+      <div class="item">
+        <i class="favorite icon"></i> Favorieten
+        <div class="menu">
+          <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Dames</a>
+          <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  2'})" ui-sref-active="active" onclick="toggleSidebar()">Reserven</a>
+          <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Heren</a>
+        </div>
+      </div>
+    </aside>
+    <div class="pusher">
+      <nav class="ui fixed inverted blue large menu" ng-controller="menuCtrl">
+        <div class="ui container">
+          <a class="launch item toggleSidebar" onclick="toggleSidebar()">
+            <i class="content icon"></i><span class="menu-label hidden mobile">Menu</span>
           </a>
-          <ul class="right hide-on-med-and-down">
-            <li ui-sref-active="active"><a ui-sref="home"><i class="material-icons left">search</i>Zoeken</a></li>
-          </ul>
-
-          <ul id="nav-mobile" class="side-nav">
-            <ul class="collapsible collapsible-accordion">
-              <li class="bold active">
-                <a class="collapsible-header active waves-effect waves-blue">
-                  <i class="material-icons">star</i> Favorieten
-                </a>
-                <div class="collapsible-body" style="display: block;">
-                  <ul>
-                    <li ui-sref-active="active"><a ui-sref="details({teamGuid: 'BVBL1281DSE  1'})">Dames</a></li>
-                    <li ui-sref-active="active"><a ui-sref="details({teamGuid: 'BVBL1281HSE  2'})">Reserven</a></li>
-                    <li ui-sref-active="active"><a ui-sref="details({teamGuid: 'BVBL1281HSE  1'})">Heren</a></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-            <!-- <li ui-sref-active="active"> <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE  1'})" href="#/teams/BVBL1281DSE%20%201">Dames</a></li>
-            <li ui-sref-active="active">      <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  2'})" href="#/teams/BVBL1281HSE%20%202">Reserven</a></li>
-            <li ui-sref-active="active">      <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  1'})" href="#/teams/BVBL1281HSE%20%201">Heren</a></li> -->
-          </ul>
-          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+          <span class="header item">
+            <!-- <img class="logo" src="assets/images/logo.png"> -->
+            {{pageTitle}}
+          </span>
+          <div class="right menu">
+            <a class="item" ui-sref="home" ui-sref-active="active">
+              <i class="search icon"></i><span class="menu-label hidden mobile">Zoeken</span>
+            </a>
+          </div>
         </div>
       </nav>
-    </div>
 
-    <div class="container">
-      <div id="page-wrapper" ui-view></div>
-    </div>
+      <div ui-view class="ui container" id="page-wrapper" style="margin-top: 60px;"></div>
+
+    </div><!-- .pusher -->
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/semantic/dist/semantic.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="app/app.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/gamesCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/menuCtrl.js" charset="utf-8"></script>
@@ -61,13 +54,9 @@
     <script type="text/javascript" src="assets/libs/ics.js" charset="utf-8"></script>
 
     <script type="text/javascript">
-      $(function () {
-        $('.button-collapse').sideNav({closeOnClick: true});
-        $(".dropdown-button").dropdown();
-        $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-      });
+      function toggleSidebar() {
+        $('#sidebar-navigation').sidebar('toggle');
+      }
     </script>
 
   </body>

@@ -2,12 +2,12 @@ angular
   .module('better-vbl')
   .controller("menuCtrl", ['$scope', 'vblDataService', function($scope, vblDataService) {
 
-    $scope.pageTitle = "Zoeken";
+    $scope.pageTitle = "VBL++";
 
-    $scope.$on('navigation.team', handleNavigationToTeam);
+    $scope.$on('navigation.pageTitle', handleNavigationToTeam);
 
     function handleNavigationToTeam (event, mass) {
-      $scope.pageTitle = shortenTeamName(mass.name.trim());
+      $scope.pageTitle = shortenTeamName(mass.trim());
     }
 
     function shortenTeamName(teamName) {

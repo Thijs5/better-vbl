@@ -18,7 +18,9 @@ angular
       );
     }
     function initializeComponents () {
-      
+      $('.ui.dropdown').dropdown({
+        on: "hover"
+      });
     }
 
     function vblDataLoadedCallback (response) {
@@ -27,21 +29,27 @@ angular
       $scope.team.games = response.data[0].wedstrijden;
       $scope.team.poule = response.data[0].poules[0].naam;
 
-      $rootScope.$broadcast('navigation.team', $scope.team);
+      $rootScope.$broadcast('navigation.pageTitle', $scope.team.name);
 
       setTimeout(initializeComponents, 200);
+      console.debug($scope.team);
     }
     function vblDataErrorCallback (response) {
       $scope.isLoadingData = true;
       console.error(response);
     }
 
-    function printDate (dateString) {
+    function toDate(dateString) {
       var parts = dateString.split('-');
       var d = parts[0];
       var m = parts[1];
       var y = parts[2];
-      var date = new Date(y,m-1,d);
+      return new Date(y,m-1,d);
+    }
+    $scope.toDate = toDate;
+
+    function printDate (dateString) {
+      var date = toDate(dateString);
       return getDayNl(date).substr(0, 2) + " " + d + " " + getMonthNl(date);
     }
     $scope.printDate = printDate;
@@ -147,6 +155,15 @@ angular
       }
       $scope.shortenTeamName = shortenTeamName;
 
+    function getOpponent(game) {
+      if (isHomeGame(game)) {
+        return game.teamUitNaam;
+      } else {
+        return game.teamThuisNaam;
+      }
+    }
+    $scope.getOpponent = getOpponent;
+
     function createGoogleMapsLink(accommOmschr) {
       var sportshall = accommOmschr.substr(0, accommOmschr.lastIndexOf(','));
 
@@ -156,6 +173,11 @@ angular
 
     }
     $scope.createGoogleMapsLink = createGoogleMapsLink;
+
+    function hasScore (game) {
+      return game.uitslag != "";
+    }
+    $scope.hasScore = hasScore;
 
     // Creates a new date object with hours added.
     function addHours(date, h) {
