@@ -1,5 +1,11 @@
-body, .pusher {background: #eeeeee;}
+body, .pusher {background: #eeeeee;display: flex;
+  min-height: 100vh;
+  flex-direction: column;}
 a {cursor: pointer;}
+
+#page-wrapper {
+  flex: 1;
+}
 
 .single.line {
   white-space: nowrap;

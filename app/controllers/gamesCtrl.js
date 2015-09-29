@@ -28,11 +28,12 @@ angular
       $scope.team.name = response.data[0].naam;
       $scope.team.games = response.data[0].wedstrijden;
       $scope.team.poule = response.data[0].poules[0].naam;
+      $scope.rankings = response.data[0].poules[0].teams;
 
       $rootScope.$broadcast('navigation.pageTitle', $scope.team.name);
 
       setTimeout(initializeComponents, 200);
-      console.debug($scope.team);
+      console.debug($scope.rankings);
     }
     function vblDataErrorCallback (response) {
       $scope.isLoadingData = true;
@@ -130,7 +131,7 @@ angular
 
     function isVictory(game) {
       if (game.uitslag == "") return false;
-      
+
       var scoreParts = game.uitslag.replace('- ', '-').match(/[\d]+-[\d]+/)[0].split('-');
       var scoreHome;
       var scoreAway;
@@ -151,11 +152,11 @@ angular
     }
     $scope.isVictory = isVictory;
 
-      function shortenTeamName(teamName) {
-        return teamName
-          .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '');
-      }
-      $scope.shortenTeamName = shortenTeamName;
+    function shortenTeamName(teamName) {
+      return teamName
+        .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '');
+    }
+    $scope.shortenTeamName = shortenTeamName;
 
     function getOpponent(game) {
       if (isHomeGame(game)) {
