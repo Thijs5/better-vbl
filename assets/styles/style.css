@@ -1,6 +1,13 @@
-body, .pusher {background: #eeeeee;display: flex;
+body, html, .pusher, #page-wrapper {
+  background-color: #eeeeee;
+}
+
+body, .pusher {
+  display: flex;
   min-height: 100vh;
-  flex-direction: column;}
+  flex-direction: column;
+}
+
 a {cursor: pointer;}
 
 #page-wrapper {
