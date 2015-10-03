@@ -8,7 +8,13 @@ app.service('vblDataService', ['$http', function ($http) {
     return $http.get(url);
   }
 
+  function getAllTeams() {
+    var url = "http://vblcb.wisseq.eu/VBLCB_WebService/data/Clubs?p=1";
+    return $http.get(url);
+  }
+
   return {
-    matchesByTeam: matchesByTeam
+    matchesByTeam: matchesByTeam,
+    getAllTeams: getAllTeams
   }
 }]);

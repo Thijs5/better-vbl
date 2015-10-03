@@ -22,7 +22,7 @@
         </div>
       </div>
     </aside>
-    <div class="pusher">
+    <div class="pusher" style="background: #eee;">
       <nav class="ui fixed inverted blue large menu" ng-controller="menuCtrl">
         <div class="ui container">
           <a class="launch item toggleSidebar" onclick="toggleSidebar()">
@@ -40,9 +40,7 @@
         </div>
       </nav>
 
-      <div id="page-wrapper">
-        <div ui-view class="ui container" style="margin-top: 60px;"></div>
-      </div>
+      <div ui-view id="page-wrapper" class="ui container" style="margin-top: 60px;"></div>
 
       <footer style="width: 100%; text-align:center; margin:10px; ">
         <a href="https://github.com/Thijs5/better-vbl" target="_blank" title="View me on Github!">
@@ -56,7 +54,9 @@
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="app/app.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/gamesCtrl.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/controllers/clubsCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/menuCtrl.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/controllers/searchCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/services/vblDataService.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/libs/ics.js" charset="utf-8"></script>
 

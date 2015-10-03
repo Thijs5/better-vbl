@@ -9,14 +9,17 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'app/views/home.html',
-      controller: function ($rootScope) {
-        $rootScope.$broadcast('navigation.pageTitle', 'Zoeken');
-      }
+      templateUrl: 'app/views/search.html',
+      controller: 'searchCtrl'
     })
-    .state('details', {
+    .state('team', {
       url: "/teams/:teamGuid",
       templateUrl: "app/views/teamDetails.html",
       controller: 'gamesCtrl'
+    })
+    .state('club', {
+      url: "/clubs/:clubGuid",
+      templateUrl: "app/views/clubDetails.html",
+      controller: 'clubsCtrl'
     });
 }]);

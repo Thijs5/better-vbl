@@ -1,5 +1,5 @@
-body, html, .pusher, #page-wrapper, footer {
-  background-color: #eeeeee;
+html, body, pusher {
+  background: #eee;
 }
 
 body, .pusher {
