@@ -13,8 +13,15 @@ app.service('vblDataService', ['$http', function ($http) {
     return $http.get(url);
   }
 
+  function getClub (clubGuid) {
+    var url = 'http://vblcb.wisseq.eu/VBLCB_WebService/data/teamsByClubGuid?issguid=__clubGuid__'
+      .replace(/__clubGuid__/g, clubGuid);
+    return $http.get(url);
+  }
+
   return {
     matchesByTeam: matchesByTeam,
-    getAllTeams: getAllTeams
+    getAllTeams: getAllTeams,
+    getClub: getClub
   }
 }]);
