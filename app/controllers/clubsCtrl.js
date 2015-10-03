@@ -23,7 +23,6 @@ angular
 			$rootScope.$broadcast('navigation.pageTitle', $scope.club.naam);
 
 			setTimeout(initializeComponents, 200);
-			console.debug($scope.club);
 		}
 		function vblDataErrorCallback (response) {
 			$scope.clubDetailsLoading = true;

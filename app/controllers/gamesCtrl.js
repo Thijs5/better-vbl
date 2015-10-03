@@ -33,7 +33,6 @@ angular
       $rootScope.$broadcast('navigation.pageTitle', $scope.team.name);
 
       setTimeout(initializeComponents, 200);
-      console.debug($scope.rankings);
     }
     function vblDataErrorCallback (response) {
       $scope.isLoadingData = true;
@@ -132,9 +131,14 @@ angular
     function isVictory(game) {
       if (game.uitslag == "") return false;
 
-      var scoreParts = game.uitslag.replace('- ', '-').match(/[\d]+-[\d]+/)[0].split('-');
-      var scoreHome;
-      var scoreAway;
+      var scoreParts = game.uitslag.split('-');
+      var scoreHome = scoreParts[0].match(/\d+/)[0];
+      var scoreAway = scoreParts[1].match(/\d+/)[0];
+
+
+      // var scoreParts = game.uitslag.replace('- ', '-').match(/[\d]+-[\d]+/)[0].split('-');
+      // var scoreHome;
+      // var scoreAway;
       if (scoreParts.length > 1) {
         scoreHome = scoreParts[0].trim();
         scoreAway = scoreParts[1].trim();

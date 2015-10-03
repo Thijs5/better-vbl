@@ -2,18 +2,6 @@ html, body, pusher {
   background: #eee;
 }
 
-body, .pusher {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-a {cursor: pointer;}
-
-#page-wrapper {
-  flex: 1;
-}
-
 .single.line {
   white-space: nowrap;
 }

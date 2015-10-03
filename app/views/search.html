@@ -8,7 +8,11 @@
   <table class="ui table compact">
     <tbody>
       <tr ng-repeat="team in teams | filter: search">
-        <td><a ui-sref="club({clubGuid: team.guid})">{{team.naam}}</a></td>
+        <td>
+          <a ui-sref="club({clubGuid: team.guid})">
+            {{team.naam}}
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>

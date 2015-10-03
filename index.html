@@ -9,6 +9,20 @@
     <link type="text/css" rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css"  media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="assets/styles/style.css" media="screen, projection" charset="utf-8" />
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+
+    <script>
+      if (window.location.host != 'localhost') {
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-67861577-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+      }
+    </script>
   </head>
   <body>
     <aside id="sidebar-navigation"
@@ -16,10 +30,13 @@
       <div class="item">
         <i class="favorite icon"></i> Favorieten
         <div class="menu">
-          <a class="item" ui-sref="details({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Dames</a>
-          <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  2'})" ui-sref-active="active" onclick="toggleSidebar()">Reserven</a>
-          <a class="item" ui-sref="details({teamGuid: 'BVBL1281HSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Heren</a>
+          <a class="item" ui-sref="team({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Dames</a>
+          <a class="item" ui-sref="team({teamGuid: 'BVBL1281HSE  2'})" ui-sref-active="active" onclick="toggleSidebar()">Reserven</a>
+          <a class="item" ui-sref="team({teamGuid: 'BVBL1281HSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Heren</a>
         </div>
+      </div>
+      <div class="item">
+        Comming soon: Zelf favorieten toevoegen
       </div>
     </aside>
     <div class="pusher" style="background: #eee;">
