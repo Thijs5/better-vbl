@@ -6,110 +6,108 @@
     </div>
   </div>
 
-  <div ng-if="isLoadingData">
-    <h1 class="ui header">
-      <div class="content">
-        <!-- <i class="icon star link" ng-click="toggleFavorite(team.guid)" ng-class="{empty: !isFavorite(team.guid)}"></i>  -->
-        {{team.poule}}
-      </div>
-    </h1>
+  <h1 class="ui header">
+    <div class="content">
+      <!-- <i class="icon star link" ng-click="toggleFavorite(team.guid)" ng-class="{empty: !isFavorite(team.guid)}"></i>  -->
+      {{team.poule}}
+    </div>
+  </h1>
 
 
-    <table class="ui table striped hidden mobile">
-      <thead>
-        <tr class="hidden mobile">
-          <th>Datum</th>
-          <th>Tijd</th>
-          <th>Thuisploeg</th>
-          <th>Bezoekers</th>
-          <th>Score</th>
-          <th>Sporthal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="game in team.games | orderBy: '-jsDTCode':true" ng-class="{positive: isVictory(game)}">
-          <td class="single line">
-            <span class="hidden tablet computer"><i class="icon calendar"></i></span>
-            {{game.datumString}}
-          </td>
-          <td class="single line">
-            <span class="hidden tablet computer"><i class="icon clock"></i></span>
-            {{game.beginTijd}}u</td>
-          <td>
-            <span class="hidden tablet computer"><i class="icon building"></i></span>
-            <a ui-sref="team({teamGuid: game.tTGUID})">{{shortenTeamName(game.tTNaam)}}</a>
-          </td>
-          <td>
-            <span class="hidden tablet computer"><i class="icon building outline"></i></span>
-            <a ui-sref="team({teamGuid: game.tUGUID})">{{shortenTeamName(game.tUNaam)}}</a>
-          </td>
-          <td class="single line">
-            <span class="hidden tablet computer"><i class="icon trophy"></i></span>
-            {{game.uitslag}}
-          </td>
-          <td>
-            <span class="hidden tablet computer"><i class="icon marker"></i></span>
-            <a href="{{createGoogleMapsLink(game.accNaam)}}" target="_blank">
-              {{game.accNaam}}
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="ui table striped hidden mobile">
+    <thead>
+      <tr class="hidden mobile">
+        <th>Datum</th>
+        <th>Tijd</th>
+        <th>Thuisploeg</th>
+        <th>Bezoekers</th>
+        <th>Score</th>
+        <th>Sporthal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="game in team.games | orderBy: '-jsDTCode':true" ng-class="{positive: isVictory(game)}">
+        <td class="single line">
+          <span class="hidden tablet computer"><i class="icon calendar"></i></span>
+          {{game.datumString}}
+        </td>
+        <td class="single line">
+          <span class="hidden tablet computer"><i class="icon clock"></i></span>
+          {{game.beginTijd}}u</td>
+        <td>
+          <span class="hidden tablet computer"><i class="icon building"></i></span>
+          <a ui-sref="team({teamGuid: game.tTGUID})">{{shortenTeamName(game.tTNaam)}}</a>
+        </td>
+        <td>
+          <span class="hidden tablet computer"><i class="icon building outline"></i></span>
+          <a ui-sref="team({teamGuid: game.tUGUID})">{{shortenTeamName(game.tUNaam)}}</a>
+        </td>
+        <td class="single line">
+          <span class="hidden tablet computer"><i class="icon trophy"></i></span>
+          {{game.uitslag}}
+        </td>
+        <td>
+          <span class="hidden tablet computer"><i class="icon marker"></i></span>
+          <a href="{{createGoogleMapsLink(game.accNaam)}}" target="_blank">
+            {{game.accNaam}}
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <div class="ui one column grid hidden tablet desktop">
-      <div class="column">
-        <div class="ui fluid card" ng-repeat="game in team.games | orderBy: '-jsDTCode':true">
+  <div class="ui one column grid hidden tablet desktop">
+    <div class="column">
+      <div class="ui fluid card" ng-repeat="game in team.games | orderBy: '-jsDTCode':true">
 
-          <div class="content">
-            <div class="header">
-              <a ui-sref="details({teamGuid: game.tTGUID})">{{shortenTeamName(getOpponent(game))}}</a>
-            </div>
-
-            <div class="meta">
-              <div class="ui horizontal list">
-                <div class="item">
-                  <i class="calendar icon"></i>
-                  <div class="content">
-                    {{getDayNl(toDate(game.beginTijd)).substr(0,2)}}
-                    {{game.datumString}}
-                  </div>
-                </div>
-                <div class="item">
-                  <i class="clock icon"></i>
-                  <div class="content">
-                    {{game.beginTijd}}u
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="description">
-              <div class="ui list">
-                <div class="item">
-                  <i class="marker icon"></i>
-                  <div class="content">
-                    {{game.accNaam}}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div ng-if="hasScore(game)" ng-class="{olive: isVictory(game)}" class="ui bottom right attached label">{{game.uitslag}}</div>
+        <div class="content">
+          <div class="header">
+            <a ui-sref="team({teamGuid: getOpponentId(game)})">{{shortenTeamName(getOpponent(game))}}</a>
           </div>
 
+          <div class="meta">
+            <div class="ui horizontal list">
+              <div class="item">
+                <i class="calendar icon"></i>
+                <div class="content">
+                  {{getDayNl(toDate(game.beginTijd)).substr(0,2)}}
+                  {{game.datumString}}
+                </div>
+              </div>
+              <div class="item">
+                <i class="clock icon"></i>
+                <div class="content">
+                  {{game.beginTijd}}u
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="description">
+            <div class="ui list">
+              <div class="item">
+                <i class="marker icon"></i>
+                <div class="content">
+                  {{game.accNaam}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div ng-if="hasScore(game)" ng-class="{olive: isVictory(game)}" class="ui bottom right attached label">{{game.uitslag}}</div>
         </div>
+
       </div>
     </div>
-
-    <div class="sticky-action-button">
-      <div class="ui icon bottom right pointing dropdown massive circular red button">
-        <i class="configure icon"></i>
-        <div class="menu">
-          <div class="item" ng-click="downloadCalendar()">Download kalender</div>
-        </div>
-      </div>
-    </div><!-- .stick-action-button -->
-
   </div>
+
+  <div class="sticky-action-button">
+    <div class="ui icon bottom right pointing dropdown massive circular red button">
+      <i class="configure icon"></i>
+      <div class="menu">
+        <div class="item" ng-click="downloadCalendar()">Download kalender</div>
+      </div>
+    </div>
+  </div><!-- .stick-action-button -->
+
 </div>

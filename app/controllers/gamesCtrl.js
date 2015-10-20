@@ -50,6 +50,8 @@ angular
       vblDataService.matchesByTeam($scope.team.guid).then(
         vblGamesLoadedCallback, vblGamesErrorCallback
       );
+
+      console.log(response);
     }
     function vblTeamDetailsErrorCallback (response) {
 
@@ -191,6 +193,15 @@ angular
       }
     }
     $scope.getOpponent = getOpponent;
+
+    function getOpponentId(game){
+      if (isHomeGame(game)) {
+        return game.tUGUID;
+      } else {
+        return game.tTGUID;
+      }
+    }
+    $scope.getOpponentId = getOpponentId
 
     function createGoogleMapsLink(accommOmschr) {
       var sportshall = accommOmschr.substr(0, accommOmschr.lastIndexOf(','));
