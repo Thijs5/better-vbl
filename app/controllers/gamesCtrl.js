@@ -14,8 +14,8 @@ angular
 
     function initialize () {
 
-      console.log('isFavorite => ' + $scope.team.guid);
-      console.log(favoritesService.isFavorite($scope.team.guid));
+      // console.log('isFavorite => ' + $scope.team.guid);
+      // console.log(favoritesService.isFavorite($scope.team.guid));
 
       vblDataService.getTeamDetails($scope.team.guid).then(
         vblTeamDetailsLoadedCallback, vblTeamDetailsErrorCallback
@@ -33,7 +33,7 @@ angular
       $scope.isLoadingData = true;
 
       setTimeout(initializeComponents, 200);
-      console.log($scope.team);
+      //console.log($scope.team);
     }
     function vblGamesErrorCallback (response) {
       $scope.isLoadingData = true;
@@ -41,8 +41,6 @@ angular
     }
 
     function vblTeamDetailsLoadedCallback(response) {
-      console.log(response);
-
       $scope.team.name = response.data[0].naam;
       $scope.rankings = response.data[0].poules[0].teams;
       $scope.team.poule = response.data[0].poules[0].naam;
@@ -58,7 +56,7 @@ angular
     }
 
     function toggleFavorite(teamId) {
-      console.log(teamId);
+      //console.log(teamId);
     }
     $scope.toggleFavorite = toggleFavorite;
 
