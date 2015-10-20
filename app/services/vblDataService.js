@@ -3,7 +3,13 @@ var app = angular.module('better-vbl');
 app.service('vblDataService', ['$http', function ($http) {
 
   function matchesByTeam(teamGuid) {
-    var url = 'http://vblcb.wisseq.eu/VBLCB_WebService/data/matchesbyteamguid?teamGuid=__teamGuid__'
+    var url = 'http://vblcb.wisseq.eu/VBLCB_WebService/data/TeamMatchesByGuid?teamGuid=__teamGuid__'
+      .replace(/__teamGuid__/g, teamGuid);
+    return $http.get(url);
+  }
+
+  function getTeamDetails(teamGuid) {
+    var url = 'http://vblcb.wisseq.eu/VBLCB_WebService/data/TeamDetailByGuid?teamGuid=__teamGuid__'
       .replace(/__teamGuid__/g, teamGuid);
     return $http.get(url);
   }
@@ -21,6 +27,7 @@ app.service('vblDataService', ['$http', function ($http) {
 
   return {
     matchesByTeam: matchesByTeam,
+    getTeamDetails: getTeamDetails,
     getAllTeams: getAllTeams,
     getClub: getClub
   }

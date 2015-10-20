@@ -1,7 +1,7 @@
 angular
   .module('better-vbl')
-  .controller("gamesCtrl", ['$scope', '$rootScope', '$stateParams', 'vblDataService',
-    function($scope, $rootScope, $stateParams, vblDataService) {
+  .controller("gamesCtrl", ['$scope', '$rootScope', '$stateParams', 'vblDataService', 'favoritesService',
+    function($scope, $rootScope, $stateParams, vblDataService, favoritesService) {
 
     var vblData = {};
     $scope.team = {
@@ -13,9 +13,14 @@ angular
     // setTimeout(initialize, 5000);
 
     function initialize () {
-      vblDataService.matchesByTeam($scope.team.guid).then(
-        vblDataLoadedCallback, vblDataErrorCallback
+
+      console.log('isFavorite => ' + $scope.team.guid);
+      console.log(favoritesService.isFavorite($scope.team.guid));
+
+      vblDataService.getTeamDetails($scope.team.guid).then(
+        vblTeamDetailsLoadedCallback, vblTeamDetailsErrorCallback
       );
+
     }
     function initializeComponents () {
       $('.ui.dropdown').dropdown({
@@ -23,21 +28,39 @@ angular
       });
     }
 
-    function vblDataLoadedCallback (response) {
+    function vblGamesLoadedCallback (response) {
+      $scope.team.games = response.data
       $scope.isLoadingData = true;
-      $scope.team.name = response.data[0].naam;
-      $scope.team.games = response.data[0].wedstrijden;
-      $scope.team.poule = response.data[0].poules[0].naam;
-      $scope.rankings = response.data[0].poules[0].teams;
-
-      $rootScope.$broadcast('navigation.pageTitle', $scope.team.name);
 
       setTimeout(initializeComponents, 200);
+      console.log($scope.team);
     }
-    function vblDataErrorCallback (response) {
+    function vblGamesErrorCallback (response) {
       $scope.isLoadingData = true;
       console.error(response);
     }
+
+    function vblTeamDetailsLoadedCallback(response) {
+      console.log(response);
+
+      $scope.team.name = response.data[0].naam;
+      $scope.rankings = response.data[0].poules[0].teams;
+      $scope.team.poule = response.data[0].poules[0].naam;
+
+      $rootScope.$broadcast('navigation.pageTitle', $scope.team.name);
+
+      vblDataService.matchesByTeam($scope.team.guid).then(
+        vblGamesLoadedCallback, vblGamesErrorCallback
+      );
+    }
+    function vblTeamDetailsErrorCallback (response) {
+
+    }
+
+    function toggleFavorite(teamId) {
+      console.log(teamId);
+    }
+    $scope.toggleFavorite = toggleFavorite;
 
     function toDate(dateString) {
       var parts = dateString.split('-');
@@ -107,9 +130,9 @@ angular
     	for (var i = 0; i < $scope.team.games.length; i++) {
     		var game = $scope.team.games[i];
 
-        var eventName = game.teamThuisNaam + ' vs ' + game.teamUitNaam;
+        var eventName = game.tTNaam + ' vs ' + game.tUNaam;
         var eventDescription = '';
-        var eventLocation = game.accommOmschr;
+        var eventLocation = game.accNaam;
 
         var dateParts = game.datumString.split('-');
         var timeParts = game.beginTijd.split('.');
@@ -124,7 +147,7 @@ angular
     $scope.downloadCalendar = downloadCalendar;
 
     function isHomeGame(game) {
-      return game.teamThuisNaam == $scope.team.name;
+      return game.tTNaam == $scope.team.name;
     }
     $scope.isHomeGame = isHomeGame;
 
@@ -164,9 +187,9 @@ angular
 
     function getOpponent(game) {
       if (isHomeGame(game)) {
-        return game.teamUitNaam;
+        return game.tUNaam;
       } else {
-        return game.teamThuisNaam;
+        return game.tTNaam;
       }
     }
     $scope.getOpponent = getOpponent;
