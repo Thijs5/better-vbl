@@ -31,13 +31,10 @@
       <div class="item">
         <i class="favorite icon"></i> Favorieten
         <div class="menu">
-          <a class="item" ui-sref="team({teamGuid: 'BVBL1281DSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Dames</a>
-          <a class="item" ui-sref="team({teamGuid: 'BVBL1281HSE  2'})" ui-sref-active="active" onclick="toggleSidebar()">Reserven</a>
-          <a class="item" ui-sref="team({teamGuid: 'BVBL1281HSE  1'})" ui-sref-active="active" onclick="toggleSidebar()">Heren</a>
+          <div class="menu" ng-repeat="f in favorites">
+            <a class="item" ui-sref="team({teamGuid: f.id})" ui-sref-active="active" onclick="toggleSidebar()">{{f.name}}</a>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        Comming soon: Zelf favorieten toevoegen
       </div>
     </aside>
     <div class="pusher" style="background: #eee;">
