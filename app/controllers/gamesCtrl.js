@@ -44,6 +44,7 @@ angular
       $scope.team.name = response.data[0].naam;
       $scope.rankings = response.data[0].poules[0].teams;
       $scope.team.poule = response.data[0].poules[0].naam;
+      $scope.isFavorite = favoritesService.isFavorite('team', $scope.team);
 
       $rootScope.$broadcast('navigation.pageTitle', $scope.team.name);
 
@@ -51,14 +52,16 @@ angular
         vblGamesLoadedCallback, vblGamesErrorCallback
       );
 
-      console.log(response);
+      //console.log(response);
     }
     function vblTeamDetailsErrorCallback (response) {
-
+      console.error(response);
     }
 
-    function toggleFavorite(teamId) {
-      //console.log(teamId);
+    function toggleFavorite(team) {
+      favoritesService.toggleFavorite('team', team);
+      $rootScope.$broadcast('favorites.update', true);
+      $scope.isFavorite = favoritesService.isFavorite('team', team);
     }
     $scope.toggleFavorite = toggleFavorite;
 
