@@ -13,7 +13,6 @@ angular
     // setTimeout(initialize, 5000);
 
     function initialize () {
-
       // console.log('isFavorite => ' + $scope.team.guid);
       // console.log(favoritesService.isFavorite($scope.team.guid));
 
@@ -42,7 +41,7 @@ angular
 
     function vblTeamDetailsLoadedCallback(response) {
       $scope.team.name = response.data[0].naam;
-      $scope.rankings = response.data[0].poules[0].teams;
+      $scope.poules = response.data[0].poules;
       $scope.team.poule = response.data[0].poules[0].naam;
       $scope.isFavorite = favoritesService.isFavorite('team', $scope.team);
 
@@ -52,7 +51,7 @@ angular
         vblGamesLoadedCallback, vblGamesErrorCallback
       );
 
-      //console.log(response);
+      console.log(response);
     }
     function vblTeamDetailsErrorCallback (response) {
       console.error(response);
@@ -161,10 +160,6 @@ angular
       var scoreHome = scoreParts[0].match(/\d+/)[0];
       var scoreAway = scoreParts[1].match(/\d+/)[0];
 
-
-      // var scoreParts = game.uitslag.replace('- ', '-').match(/[\d]+-[\d]+/)[0].split('-');
-      // var scoreHome;
-      // var scoreAway;
       if (scoreParts.length > 1) {
         scoreHome = scoreParts[0].trim();
         scoreAway = scoreParts[1].trim();
@@ -188,6 +183,17 @@ angular
     }
     $scope.shortenTeamName = shortenTeamName;
 
+
+    function createGoogleMapsLink(accommOmschr) {
+      var sportshall = accommOmschr.substr(0, accommOmschr.lastIndexOf(','));
+
+      var url = "https://www.google.be/maps/search/__accommOmschr__";
+      var filledIn = url.replace("__accommOmschr__", sportshall);
+      return filledIn;
+
+    }
+    $scope.createGoogleMapsLink = createGoogleMapsLink;
+
     function getOpponent(game) {
       if (isHomeGame(game)) {
         return game.tUNaam;
@@ -206,15 +212,6 @@ angular
     }
     $scope.getOpponentId = getOpponentId
 
-    function createGoogleMapsLink(accommOmschr) {
-      var sportshall = accommOmschr.substr(0, accommOmschr.lastIndexOf(','));
-
-      var url = "https://www.google.be/maps/search/__accommOmschr__";
-      var filledIn = url.replace("__accommOmschr__", sportshall);
-      return filledIn;
-
-    }
-    $scope.createGoogleMapsLink = createGoogleMapsLink;
 
     function hasScore (game) {
       return game.uitslag != "";
@@ -227,4 +224,6 @@ angular
     	copy.setTime(copy.getTime() + h * 60 * 60 * 1000);
     	return copy;
     }
+
+
   }]);

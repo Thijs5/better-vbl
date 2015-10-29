@@ -12,14 +12,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
       templateUrl: 'app/views/search.html',
       controller: 'searchCtrl'
     })
+    .state('club', {
+      url: "/clubs/:clubGuid",
+      templateUrl: "app/views/clubDetails.html",
+      controller: 'clubsCtrl'
+    })
     .state('team', {
       url: "/teams/:teamGuid",
       templateUrl: "app/views/teamDetails.html",
       controller: 'gamesCtrl'
     })
-    .state('club', {
-      url: "/clubs/:clubGuid",
-      templateUrl: "app/views/clubDetails.html",
-      controller: 'clubsCtrl'
+    .state('team.calendar', {
+      url: '/kalendar',
+      templateUrl: 'app/views/team.calendar.html',
+      controller: 'calendarCtrl'
+    })
+    .state('team.rankings', {
+      url: '/klassement',
+      templateUrl: 'app/views/team.rankings.html',
+      controller: 'rankingsCtrl'
     });
 }]);

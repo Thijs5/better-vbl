@@ -32,7 +32,7 @@
         <i class="favorite icon"></i> Favorieten
         <div class="menu">
           <div class="menu" ng-repeat="f in favorites">
-            <a class="item" ui-sref="team({teamGuid: f.id})" ui-sref-active="active" onclick="toggleSidebar()">{{f.name}}</a>
+            <a class="item" ui-sref="team.calendar({teamGuid: f.id})" ui-sref-active="active" onclick="toggleSidebar()">{{f.name}}</a>
           </div>
         </div>
       </div>
@@ -57,11 +57,6 @@
 
       <div ui-view id="page-wrapper" class="ui container" style="margin-top: 60px;"></div>
 
-      <footer style="width: 100%; text-align:center; margin:10px; ">
-        <a href="https://github.com/Thijs5/better-vbl" target="_blank" title="View me on Github!">
-          <i class="large github icon"></i>
-        </a>
-      </footer>
     </div><!-- .pusher -->
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -75,6 +70,8 @@
     <script type="text/javascript" src="app/controllers/clubsCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/menuCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/searchCtrl.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/controllers/calendarCtrl.js" charset="utf-8"></script>
+    <script type="text/javascript" src="app/controllers/rankingsCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/controllers/sidebarCtrl.js" charset="utf-8"></script>
     <script type="text/javascript" src="app/filters/groupByFilter.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/libs/ics.js" charset="utf-8"></script>
