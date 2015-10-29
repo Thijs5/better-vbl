@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="team in poule.teams">
+      <tr ng-repeat="team in poule.teams" ng-class="{positive: isCurrentTeam(team.naam)}">
         <td>{{team.rangNr}}</td>
         <td>
           <a ui-sref="team.calendar({teamGuid: team.guid})">

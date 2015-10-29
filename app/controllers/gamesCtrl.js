@@ -51,7 +51,7 @@ angular
         vblGamesLoadedCallback, vblGamesErrorCallback
       );
 
-      console.log(response);
+      // console.log(response);
     }
     function vblTeamDetailsErrorCallback (response) {
       console.error(response);
@@ -183,6 +183,10 @@ angular
     }
     $scope.shortenTeamName = shortenTeamName;
 
+    function isCurrentTeam(teamName) {
+      return shortenTeamName(teamName) == shortenTeamName($scope.team.name);
+    }
+    $scope.isCurrentTeam = isCurrentTeam;
 
     function createGoogleMapsLink(accommOmschr) {
       var sportshall = accommOmschr.substr(0, accommOmschr.lastIndexOf(','));
