@@ -1,4 +1,5 @@
 <div ng-repeat="poule in poules">
+  <h4 class="ui header">{{poule.naam}}</h4>
   <table class="ui table striped hidden mobile">
     <thead>
       <tr>
@@ -13,7 +14,11 @@
     <tbody>
       <tr ng-repeat="team in poule.teams">
         <td>{{team.rangNr}}</td>
-        <td>{{shortenTeamName(team.naam)}}</td>
+        <td>
+          <a ui-sref="team.calendar({teamGuid: team.guid})">
+            {{shortenTeamName(team.naam)}}
+          </a>
+        </td>
         <td>{{team.wedAant}}</td>
         <td>{{team.wedPunt}}</td>
         <td>{{team.ptVoor}}</td>
@@ -28,7 +33,7 @@
 
         <div class="content">
           <div class="header">
-            <a ui-sref="team.kalendar({teamGuid: team.guid})">
+            <a ui-sref="team.calendar({teamGuid: team.guid})">
               {{team.rangNr}}. {{shortenTeamName(team.naam)}}
             </a>
           </div>
