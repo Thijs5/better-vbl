@@ -32,7 +32,7 @@ angular
       $scope.isLoadingData = true;
 
       setTimeout(initializeComponents, 200);
-      console.log(response);
+      // console.log(response);
     }
     function vblGamesErrorCallback (response) {
       $scope.isLoadingData = true;
@@ -51,7 +51,7 @@ angular
         vblGamesLoadedCallback, vblGamesErrorCallback
       );
 
-      // console.log(response);
+      console.log(response);
     }
     function vblTeamDetailsErrorCallback (response) {
       console.error(response);

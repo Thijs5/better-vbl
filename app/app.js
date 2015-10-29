@@ -19,17 +19,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     })
     .state('team', {
       url: "/teams/:teamGuid",
-      templateUrl: "app/views/teamDetails.html",
+      templateUrl: "app/views/team.html",
       controller: 'gamesCtrl'
     })
     .state('team.calendar', {
       url: '/kalendar',
       templateUrl: 'app/views/team.calendar.html',
-      controller: 'calendarCtrl'
     })
     .state('team.rankings', {
       url: '/klassement',
       templateUrl: 'app/views/team.rankings.html',
-      controller: 'rankingsCtrl'
     });
 }]);
