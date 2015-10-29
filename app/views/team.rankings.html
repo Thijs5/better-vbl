@@ -29,7 +29,7 @@
 
   <div class="ui one column grid hidden tablet desktop">
     <div class="column">
-      <div class="ui fluid card" ng-repeat="team in poule.teams">
+      <div class="ui fluid card" ng-repeat="team in poule.teams" ng-class="{blue: isCurrentTeam(team.naam)}">
 
         <div class="content">
           <div class="header">
