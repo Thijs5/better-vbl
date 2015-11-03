@@ -11,7 +11,7 @@
 			<h2>{{g.categorie}}</h2>
 
 			<div class="ui list">
-			  <a ng-repeat="team in g.items | orderBy:'naam'" ui-sref="team({teamGuid: team.guid})" class="item">
+			  <a ng-repeat="team in g.items | orderBy:'naam'" ui-sref="team.calendar({teamGuid: team.guid})" class="item">
 			  	{{team.naam}}
 			  </a>
 			</div>

@@ -12,7 +12,10 @@ angular
 
     function shortenTeamName(teamName) {
       return teamName
-        .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '');
+        // e.g. BBC Hoeilaart HSE A => BBC Hoeilaart
+        .replace(/[\s]{1}[a-zA-Z]{3}[\s]{1}[a-zA-Z]{1}$/g, '')
+        // e.g. Stella Artois Leuven Bears G12 A => Stella Artois Leuven Bears
+        .replace(/[\s]{1}[a-zA-Z]{1}[\d]{2}[\s]{1}[a-zA-Z]/g, '');
     }
     $scope.shortenTeamName = shortenTeamName;
 

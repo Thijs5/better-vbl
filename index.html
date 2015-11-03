@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8">
+    <meta name="keywords" content="resultaten, results, vbl, vlaamse basketballiga, vlaamse, basketballiga, uitslagen, scores, ploegen, klassement, kalender" />
+    <meta name="description" content="VBL resultaten en klassement bekijken. Bekijk hier alle resultaten en matchen voor alle ploegen die aangesloten zijn bij de Vlaamse Basketballiga." />
     <title>VBL - Vlaamse Basketballiga</title>
 
     <link type="text/css" rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css"  media="screen,projection" />
@@ -39,7 +41,7 @@
       </div>
     </aside>
     <div class="pusher" style="background: #eee;">
-      <nav class="ui fixed inverted blue large menu" ng-controller="menuCtrl">
+      <nav class="ui fixed inverted blue menu" ng-controller="menuCtrl">
         <div class="ui container">
           <a class="launch item toggleSidebar" onclick="toggleSidebar()">
             <i class="content icon"></i><span class="menu-label hidden mobile">Menu</span>
@@ -76,9 +78,11 @@
     <script type="text/javascript" src="assets/libs/ics.js" charset="utf-8"></script>
 
     <script type="text/javascript">
+
       function toggleSidebar() {
         $('#sidebar-navigation').sidebar('toggle');
       }
+      
     </script>
 
   </body>
