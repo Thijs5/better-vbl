@@ -1,0 +1,66 @@
+<h3 class="ui header">Spelers</h3>
+<table class="ui table striped hidden mobile">
+  <thead>
+    <tr>
+      <th>VBL nr</th>
+      <th>Naam</th>
+      <th>Geboortedatum</th>
+      <th>Ingeschreven op</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="player in team.players | orderBy:'-naam':true">
+      <td>{{player.lidNr}}</td>
+      <td>{{player.naam}}</td>
+      <td>{{player.sGebDat}}</td>
+      <td>{{player.sAanslDat}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ui cards stackable hidden desktop tablet">
+  <div class="card" ng-repeat="player in team.players | orderBy:'-naam':true">
+    <div class="content">
+      <div class="header">{{player.naam}}</div>
+      <div class="meta">{{player.sGebDat}}</div>
+      <div class="description">
+        <strong>VBL nr: </strong>{{player.lidNr}}
+        <br/>
+        <strong>Aangesloten: </strong>{{player.sAanslDat}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="ui header">Technische vergunningen</h3>
+<table class="ui table striped hidden mobile">
+  <thead>
+    <tr>
+      <th>VBL Nr</th>
+      <th>Naam</th>
+      <th>Type</th>
+      <th>TV nr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="license in team.licenses | orderBy:'-naam':true">
+      <td>{{license.lidNr}}</td>
+      <td>{{license.naam}}</td>
+      <td>{{license.tvCaC}}</td>
+      <td>{{license.tvNr}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="ui cards stackable hidden desktop tablet">
+  <div class="card" ng-repeat="license in team.licenses | orderBy:'-naam':true">
+    <div class="content">
+      <div class="header">{{license.naam}}</div>
+      <div class="meta">{{license.tvCaC}}</div>
+      <div class="description">
+        <strong>VBL nr: </strong>{{license.lidNr}}
+        <br/>
+        <strong>TV nr: </strong>{{license.tvNr}}
+      </div>
+    </div>
+  </div>
+</div>

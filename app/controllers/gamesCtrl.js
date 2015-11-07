@@ -45,6 +45,9 @@ angular
       $scope.team.poule = response.data[0].poules[0].naam;
       $scope.isFavorite = favoritesService.isFavorite('team', $scope.team);
 
+      $scope.team.players = response.data[0].spelers;
+      $scope.team.licenses = response.data[0].tvlijst;
+
       $rootScope.$broadcast('navigation.pageTitle', $scope.team.name);
 
       vblDataService.matchesByTeam($scope.team.guid).then(
@@ -52,6 +55,7 @@ angular
       );
 
       // console.log(response);
+
     }
     function vblTeamDetailsErrorCallback (response) {
       console.error(response);

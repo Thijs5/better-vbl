@@ -8,15 +8,10 @@
   <h1 class="ui header">
     <div class="content">
       <i class="icon star link" ng-click="toggleFavorite(team)" ng-class="{empty: !isFavorite}"></i>
+
       {{team.poule}}
-    </div>
-  </h1>
 
-  <div class="ui secondary pointing menu">
-    <a class="item" ui-sref-active="active" ui-sref="team.calendar({teamGuid: team.guid})">
-      <i class="calendar icon"></i> Kalender&nbsp;
-
-      <div class="ui inline dropdown">
+      <div class="ui left inline dropdown">
         <i class="dropdown icon"></i>
         <div class="menu">
           <div class="item" data-text="Download kalender" ng-click="downloadCalendar()">
@@ -24,15 +19,35 @@
           </div>
         </div>
       </div>
+    </div>
+  </h1>
+
+  <div class="ui secondary pointing labeled icon menu hidden desktop tablet">
+    <a class="item" ui-sref-active="active" ui-sref="team.calendar({teamGuid: team.guid})" style="width:33%;">
+      <i class="calendar icon"></i> Kalender
+    </a>
+    <a class="item" ui-sref-active="active" ui-sref="team.rankings({teamGuid: team.guid})" style="width:33%;">
+      <i class="trophy icon"></i>
+      Klassement
+    </a>
+    <a class="item" ui-sref-active="active" ui-sref="team.members({teamGuid: team.guid})" style="width:33%;">
+      <i class="users icon"></i>
+      Leden
+    </a>
+  </div>
+
+  <div class="ui secondary pointing menu hidden mobile">
+    <a class="item" ui-sref-active="active" ui-sref="team.calendar({teamGuid: team.guid})">
+      <i class="calendar icon"></i> Kalender
     </a>
     <a class="item" ui-sref-active="active" ui-sref="team.rankings({teamGuid: team.guid})">
       <i class="trophy icon"></i>
       Klassement
     </a>
-    <!-- <a class="item" ui-sref-active="active">
+    <a class="item" ui-sref-active="active" ui-sref="team.members({teamGuid: team.guid})">
       <i class="users icon"></i>
       Leden
-    </a> -->
+    </a>
   </div>
 
   <div ui-view></div>
